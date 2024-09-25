@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json.schemastore.org/prettierrc",
+    "semi": false,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": true,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 120,
+    "plugins": ["prettier-plugin-sh"],
+    "overrides": [
+        {
+            "files": ["docker/Dockerfile"],
+            "options": {
+                "parser": "sh"
+            }
+        }
+    ]
+}

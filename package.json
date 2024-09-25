@@ -1,0 +1,64 @@
+{
+    "author": "",
+    "dependencies": {
+        "husky": "9.0.11",
+        "wireit": "^0.14.9"
+    },
+    "description": "",
+    "keywords": [],
+    "license": "ISC",
+    "main": "index.js",
+    "name": "tacos-ng",
+    "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
+    "scripts": {
+        "build": "wireit",
+        "commit": "pnpm dlx git-cz@latest",
+        "dev": "wireit",
+        "dev:backend": "wireit",
+        "dev:frontend": "wireit",
+        "format": "wireit",
+        "lint": "wireit",
+        "test": "wireit"
+    },
+    "version": "1.0.0",
+    "wireit": {
+        "build": {
+            "dependencies": [
+                "./packages/frontend:build",
+                "./packages/backend:build"
+            ]
+        },
+        "dev": {
+            "command": "concurrently \"pnpm run dev:backend\" \"pnpm run dev:frontend\"",
+            "service": true
+        },
+        "dev:backend": {
+            "command": "cd ./packages/backend && pnpm run dev"
+        },
+        "dev:frontend": {
+            "command": "cd ./packages/frontend && pnpm run dev"
+        },
+        "format": {
+            "dependencies": [
+                "./packages/frontend:format",
+                "./packages/backend:format"
+            ]
+        },
+        "lint": {
+            "dependencies": [
+                "./packages/frontend:lint",
+                "./packages/backend:lint"
+            ]
+        },
+        "test": {
+            "dependencies": [
+                "./packages/frontend:test",
+                "./packages/backend:test"
+            ]
+        }
+    },
+    "devDependencies": {
+        "concurrently": "^9.0.1",
+        "prettier-plugin-sh": "^0.14.0"
+    }
+}
