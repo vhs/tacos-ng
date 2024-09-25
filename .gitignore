@@ -1,6 +1,10 @@
 *
 !.gitignore
 
+!.github/
+!.github/**/
+!.github/**/*
+
 !docker/
 !docker/**/*
 
