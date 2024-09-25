@@ -1,0 +1,14 @@
+*
+!.gitignore
+
+!.vscode/
+!.vscode/extensions.json
+
+!src/
+!src/**/
+!src/**/*
+
+!eslint.config.mjs
+!package.json
+!tsconfig.json
+!tsup.config.ts

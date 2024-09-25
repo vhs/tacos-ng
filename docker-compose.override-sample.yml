@@ -1,0 +1,20 @@
+services:
+    backend:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile
+            target: backend
+        networks:
+            - proxy
+
+    frontend:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile
+            target: frontend
+        networks:
+            - proxy
+
+networks:
+    proxy:
+        external: true

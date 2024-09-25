@@ -1,0 +1,5 @@
+services:
+    backend:
+        image: vanhack/tacos-backend
+    frontend:
+        image: vanhack/tacos-frontend
