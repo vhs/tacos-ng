@@ -1,5 +1,8 @@
 services:
     backend:
-        image: vanhack/tacos-backend
+        image: ghcr.io/vhs/tacos-ng-backend:main
+        restart: always
+
     frontend:
-        image: vanhack/tacos-frontend
+        image: ghcr.io/vhs/tacos-ng-frontend:main
+        restart: always

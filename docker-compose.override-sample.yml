@@ -4,14 +4,31 @@ services:
             context: .
             dockerfile: docker/Dockerfile
             target: backend
+        labels:
+            traefik.docker.network: proxy
+            traefik.enable: 'true'
+            traefik.http.routers.tacos-backend.entryPoints: websecure
+            traefik.http.routers.tacos-backend.rule: Host(`tacos.devtest.vanhack.ca`) && PathPrefix(`/api`)
+            traefik.http.routers.tacos-backend.tls: 'true'
+            traefik.http.routers.tacos-backend.tls.certresolver: lets-encrypt
+            traefik.http.services.service-tacos.loadbalancer.server.port: '7000'
         networks:
             - proxy
+        volumes:
+            - ./data:/data
 
     frontend:
         build:
             context: .
             dockerfile: docker/Dockerfile
             target: frontend
+        labels:
+            traefik.docker.network: proxy
+            traefik.enable: 'true'
+            traefik.http.routers.tacos-frontend.entryPoints: websecure
+            traefik.http.routers.tacos-frontend.rule: Host(`tacos.devtest.vanhack.ca`)
+            traefik.http.routers.tacos-frontend.tls: 'true'
+            traefik.http.routers.tacos-frontend.tls.certresolver: lets-encrypt
         networks:
             - proxy
 
