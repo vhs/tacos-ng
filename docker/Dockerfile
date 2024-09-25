@@ -20,7 +20,7 @@ WORKDIR /build
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm deploy --filter=@vhs/tacos-backend --prod /stage
 
-FROM node:lts-slim AS backend
+FROM base AS backend
 
 EXPOSE 7000
 
