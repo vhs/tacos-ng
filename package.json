@@ -5,6 +5,10 @@
         "wireit": "^0.14.9"
     },
     "description": "",
+    "devDependencies": {
+        "concurrently": "^9.0.1",
+        "prettier-plugin-sh": "^0.14.0"
+    },
     "keywords": [],
     "license": "ISC",
     "main": "index.js",
@@ -18,6 +22,7 @@
         "dev:frontend": "wireit",
         "format": "wireit",
         "lint": "wireit",
+        "lint:fix": "wireit",
         "test": "wireit"
     },
     "version": "1.0.0",
@@ -33,10 +38,10 @@
             "service": true
         },
         "dev:backend": {
-            "command": "cd ./packages/backend && pnpm run dev"
+            "command": "pnpm --filter @vhs/tacos-backend run dev"
         },
         "dev:frontend": {
-            "command": "cd ./packages/frontend && pnpm run dev"
+            "command": "pnpm --filter @vhs/tacos-frontend run dev"
         },
         "format": {
             "dependencies": [
@@ -50,15 +55,17 @@
                 "./packages/backend:lint"
             ]
         },
+        "lint:fix": {
+            "dependencies": [
+                "./packages/frontend:lint:fix",
+                "./packages/backend:lint:fix"
+            ]
+        },
         "test": {
             "dependencies": [
                 "./packages/frontend:test",
                 "./packages/backend:test"
             ]
         }
-    },
-    "devDependencies": {
-        "concurrently": "^9.0.1",
-        "prettier-plugin-sh": "^0.14.0"
     }
 }

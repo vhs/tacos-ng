@@ -48,11 +48,12 @@
     "private": true,
     "scripts": {
         "build": "wireit",
-        "commit": "pnpm dlx git-cz@latest --scope=backend",
         "cmd:dev": "wireit",
+        "commit": "pnpm dlx git-cz@latest --scope=backend",
         "dev": "wireit",
-        "format": "prettier -c src",
-        "lint": "eslint src",
+        "format": "wireit",
+        "lint": "wireit",
+        "lint:fix": "wireit",
         "start": "wireit",
         "test": "wireit"
     },
@@ -87,6 +88,15 @@
         },
         "dev": {
             "command": "pnpm run cmd:dev --watch"
+        },
+        "format": {
+            "command": "prettier -w src"
+        },
+        "lint": {
+            "command": "eslint src"
+        },
+        "lint:fix": {
+            "command": "eslint --fix src"
         },
         "start": {
             "command": "node dist/index.js",
