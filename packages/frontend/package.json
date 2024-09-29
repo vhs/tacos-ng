@@ -61,16 +61,16 @@
     "private": true,
     "scripts": {
         "build": "wireit",
-        "build-storybook": "storybook build",
+        "build-storybook": "wireit",
         "commit": "pnpm dlx git-cz@latest --scope=frontend",
         "create:component": "generate-react c",
         "dev": "wireit",
-        "format": "prettier -w src/**/*.{ts,tsx} src/**/*.{css,scss}",
-        "lint": "eslint src/**/*.{ts,tsx} && stylelint src/**/*.{css,scss}",
-        "lint:fix": "eslint --fix src/**/*.{ts,tsx} && stylelint --fix src/**/*.{css,scss}",
+        "format": "wireit",
+        "lint": "wireit",
+        "lint:fix": "wireit",
         "preview": "wireit",
         "storybook": "wireit",
-        "test": "jest"
+        "test": "wireit"
     },
     "type": "module",
     "version": "1.0.0",
@@ -81,20 +81,53 @@
                 "build:composite"
             ]
         },
+        "build-storybook": {
+            "command": "storybook build"
+        },
         "build:composite": {
             "command": "tsc -b"
         },
         "dev": {
-            "command": "vite",
+            "command": "vite --strictPort",
             "service": true
         },
+        "eslint": {
+            "command": "eslint src/**/*.{ts,tsx}"
+        },
+        "eslint:fix": {
+            "command": "eslint --fix src/**/*.{ts,tsx}"
+        },
+        "format": {
+            "command": "prettier -w src/**/*.{ts,tsx} src/**/*.{css,scss}"
+        },
+        "lint": {
+            "dependencies": [
+                "eslint",
+                "stylelint"
+            ]
+        },
+        "lint:fix": {
+            "dependencies": [
+                "eslint:fix",
+                "stylelint:fix"
+            ]
+        },
         "preview": {
-            "command": "vite preview",
+            "command": "vite preview --strictPort",
             "service": true
         },
         "storybook": {
             "command": "storybook dev -p 6006",
             "service": true
+        },
+        "stylelint": {
+            "command": "stylelint src/**/*.{css,scss}"
+        },
+        "stylelint:fix": {
+            "command": "stylelint --fix src/**/*.{css,scss}"
+        },
+        "test": {
+            "command": "jest"
         }
     }
 }
