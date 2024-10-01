@@ -1,75 +1,66 @@
+@import url('https://fonts.google.com/specimen/Cutive');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    color-scheme: light dark;
-    color: rgb(255 255 255 / 87%);
-    background-color: #242424;
-    font-synthesis: none;
-    text-rendering: optimizelegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-}
-
-a:hover {
-    color: #535bf2;
-}
-
 body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
+    background-color: #1f1f21;
 }
 
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
-
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-
-button:hover {
-    border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #fff;
+@layer components {
+    .sidebar {
+        @apply fixed left-0 top-0 m-0 flex
+        h-screen w-[236px] flex-col bg-gray-900
+        text-white shadow-lg transition-all delay-150 duration-300 ease-linear;
     }
 
-    a:hover {
-        color: #747bff;
+    .sidebar-collapsed {
+        @apply w-[114px];
     }
 
-    button {
-        background-color: #f9f9f9;
+    .sidebar-header {
+        @apply ml-4 mt-[11.5px] min-h-[60px] bg-gradient-to-r from-yellow-600
+        via-orange-600 to-red-600 bg-clip-text font-header-cutive
+        text-6xl font-semibold leading-[60px]
+        text-transparent transition-all delay-150 duration-[350ms] ease-linear;
+    }
+
+    .sidebar-collapsed .sidebar-header {
+        @apply text-2xl duration-[300ms] ease-linear;
+    }
+
+    .sidebar-icon {
+        @apply relative mb-6 ml-[18px] flex 
+        h-10 w-10 cursor-pointer items-center justify-center
+        rounded-[15px] bg-gradient-to-r from-yellow-600
+        via-orange-600 to-red-600 transition-all duration-300 ease-linear
+        hover:rounded-[10px];
+    }
+
+    .sidebar-tooltip {
+        @apply absolute left-28 m-2 w-auto min-w-max origin-left
+        scale-0 rounded-md bg-gray-900 p-2 text-lg font-bold
+        text-white shadow-md transition-all duration-100;
+    }
+
+    .sidebar-collapsed .sidebar-icon:hover .sidebar-tooltip {
+        @apply scale-100;
+    }
+
+    .sidebar-icon-text {
+        @apply absolute left-16 min-w-max font-header-cutive text-2xl font-medium
+        opacity-100 transition-opacity delay-[300ms] duration-[450ms];
+    }
+
+    .sidebar-collapsed .sidebar-icon-text {
+        @apply opacity-0 transition-opacity delay-0 duration-200;
+    }
+
+    .sidebar-expand-button {
+        @apply absolute left-full top-1/2 flex h-6 w-6 -translate-x-1/2
+        cursor-pointer items-center justify-center rounded-[10px] 
+        bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 
+        transition-all delay-100 duration-300 ease-linear hover:rounded-md;
     }
 }
