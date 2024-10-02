@@ -7,7 +7,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                'header-cutive': ['Cutive']
+                cutive: ['Cutive']
             },
             colors: {
                 'header-color': '#004E63',
