@@ -15,6 +15,12 @@
             "options": {
                 "parser": "sh"
             }
+        },
+        {
+            "files": ["packages/frontend/**/*"],
+            "options": {
+                "plugins": ["prettier-plugin-tailwindcss"]
+            }
         }
     ]
 }
