@@ -1,12 +1,12 @@
 import { FC, useState, useEffect } from 'react'
-import { FaAngleLeft, FaAngleRight, FaHome, FaTools, FaDesktop, FaClipboardList } from 'react-icons/fa'
-import { FaHouseChimney } from 'react-icons/fa6'
+import { FaTools, FaDesktop } from 'react-icons/fa'
+import { FaHouseChimney, FaCodepen, FaClipboardList } from 'react-icons/fa6'
 import MobileBarIcon from './MobileBarIcon/MobileBarIcon'
 import './MobileBar.css'
 
 const SideBarIcons = [
     { icon: <FaHouseChimney size='32'></FaHouseChimney>, text: 'Home' },
-    { icon: <FaTools size='32'></FaTools>, text: 'Devices' },
+    { icon: <FaCodepen size='32'></FaCodepen>, text: 'Devices' },
     { icon: <FaDesktop size='32'></FaDesktop>, text: 'Terminals' },
     {
         icon: <FaClipboardList size='32'></FaClipboardList>,
@@ -15,13 +15,18 @@ const SideBarIcons = [
 ]
 
 const MobileBar: FC = () => {
-    const [isExpanded, setIsExpanded] = useState<boolean>(true)
     const [isVisible, setIsVisible] = useState<boolean>(true)
     const [lastScrollY, setLastScrollY] = useState<number>(0)
 
     useEffect(() => {
         const handleScroll = () => {
             const curScrollY = window.scrollY
+            const maxScrollY = document.documentElement.scrollHeight - window.innerHeight
+
+            if (curScrollY >= maxScrollY || curScrollY <= 0) {
+                return
+            }
+
             if (curScrollY > lastScrollY && curScrollY > 100) {
                 setIsVisible(false)
             } else if (curScrollY < lastScrollY) {

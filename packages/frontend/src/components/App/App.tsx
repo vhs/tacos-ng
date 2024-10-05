@@ -18,7 +18,7 @@ export function App() {
     }, [])
 
     return (
-        <div className='flex bg-gray-800'>
+        <div className='flex bg-zinc-900'>
             {isMobile ? <MobileBar /> : <MobileBar />}
             <Devices />
         </div>
