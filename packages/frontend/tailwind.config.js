@@ -7,13 +7,12 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                cutive: ['Cutive']
+                teko: ['Teko', 'sans-serif']
             },
             colors: {
                 'header-color': '#004E63',
                 'header-text': '#F7F6F6',
                 'page-color': '#1f1f21',
-
                 gray: {
                     900: '#202225',
                     800: '#2f3136',
