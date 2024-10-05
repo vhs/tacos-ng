@@ -1,5 +1,3 @@
-@import url('https://fonts.google.com/specimen/Cutive');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,8 +14,8 @@
     }
 
     .sidebar-v-header {
-        @apply ml-4 mt-[11.5px] min-h-[60px] bg-gradient-to-r from-yellow-600
-        via-orange-600 to-red-600 bg-clip-text font-cutive
+        @apply font-teko ml-4 mt-[11.5px] min-h-[60px] bg-gradient-to-r
+        from-yellow-600 via-orange-600 to-red-600 bg-clip-text
         text-6xl font-semibold leading-[60px]
         text-transparent transition-all delay-150 duration-[350ms] ease-linear;
     }
@@ -45,7 +43,7 @@
     }
 
     .sidebar-v-icon-text {
-        @apply absolute left-16 min-w-max font-cutive text-2xl font-medium
+        @apply font-teko absolute left-16 min-w-max text-2xl font-medium
         opacity-100 transition-opacity delay-[300ms] duration-[450ms];
     }
 
