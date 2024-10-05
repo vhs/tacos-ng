@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FaAngleLeft, FaAngleRight, FaHome, FaTools, FaDesktop, FaClipboardList } from 'react-icons/fa'
 import SideBarIcon from './SideBarIcon/SideBarIcon'
-import "./SideBarVertical.css"
+import './SideBarVertical.css'
 
 const SideBarIcons = [
     { icon: <FaHome size='32'></FaHome>, text: 'Dashboard' },
@@ -14,7 +14,7 @@ const SideBarIcons = [
 ]
 
 export default function SideBarVertical() {
-    const [isExpanded, setIsExpanded] = useState(true);
+    const [isExpanded, setIsExpanded] = useState(true)
     return (
         <div className={`sidebar-v ${!isExpanded && 'sidebar-v-collapsed'}`}>
             <div className='sidebar-v-header'>TACOS</div>
@@ -31,6 +31,6 @@ export default function SideBarVertical() {
             >
                 {isExpanded ? <FaAngleLeft size='20'></FaAngleLeft> : <FaAngleRight size='20'></FaAngleRight>}
             </div>
-        </div >
+        </div>
     )
 }
