@@ -20,6 +20,18 @@
         "[css][scss][tailwindcss]": {
             "editor.quickSuggestions": {
                 "strings": "on"
+            },
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.codeActionsOnSave": {
+                "source.fixAll.stylelint": "always",
+                "source.fixAll.prettier": "always"
+            }
+        },
+        "[typescript][typescriptreact]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.codeActionsOnSave": {
+                "source.fixAll.eslint": "always",
+                "source.fixAll.prettier": "always"
             }
         },
         "typescript.tsdk": "Frontend/node_modules/typescript/lib",
