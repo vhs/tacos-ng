@@ -6,12 +6,9 @@ interface MobileBarIconProps {
 }
 
 const MobileBarIcon: FC<MobileBarIconProps> = (props) => (
-    <div className='flex items-center'>
-        <div className='sidebar-v-icon'>
-            {props.icon}
-            <span className='sidebar-v-icon-text'>{props.text}</span>
-            <span className='sidebar-v-tooltip'>{props.text}</span>
-        </div>
+    <div className='navbar-icons'>
+        <div className='navbar-icon'>{props.icon}</div>
+        <div className='navbar-icon-text'>{props.text}</div>
     </div>
 )
 

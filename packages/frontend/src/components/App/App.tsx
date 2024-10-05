@@ -18,8 +18,8 @@ export function App() {
     }, [])
 
     return (
-        <div className='flex h-screen'>
-            {isMobile ? <MobileBar /> : <SideBarVertical />}
+        <div className='flex bg-gray-800'>
+            {isMobile ? <MobileBar /> : <MobileBar />}
             <Devices />
         </div>
     )
