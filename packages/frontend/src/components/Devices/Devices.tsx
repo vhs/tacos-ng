@@ -8,15 +8,8 @@ export default function Devices() {
     const [selectedRole, setSelectedRole] = useState<string>('')
 
     return (
-        <div className='flex flex-grow flex-col px-4 pt-3'>
-            <div
-                className='font-teko mb-4
-                text-center text-5xl font-bold 
-                text-white'
-            >
-                Devices
-            </div>
-            <div className='flex flex-row flex-wrap'>
+        <div className='w-full px-4 pt-3'>
+            <div className='flex flex-col'>
                 <Device />
                 <Device />
                 <Device />

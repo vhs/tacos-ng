@@ -17,10 +17,10 @@ const DeviceRoles: FC<DeviceRolesProps> = ({ selectedRole, onRoleChange }) => {
     ]
     console.log('Hello Roles')
     return (
-        <div className='flex flex-col mt-4'>
-            <span className='font-cutive mr-1 font-semibold'>Roles:</span>
+        <div className='mt-4 flex'>
+            <span className='font-teko mr-1 font-semibold'>Roles:</span>
             <select
-                className='font-cutive flex-1 rounded-md py-[2.5px]'
+                className='font-teko flex-1 rounded-md text-black'
                 value={selectedRole}
                 title='Roles'
                 onChange={(e) => onRoleChange(e.target.value)}
