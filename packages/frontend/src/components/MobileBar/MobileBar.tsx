@@ -1,35 +1,49 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { FaAngleLeft, FaAngleRight, FaHome, FaTools, FaDesktop, FaClipboardList } from 'react-icons/fa'
+import { FaHouseChimney } from 'react-icons/fa6'
 import MobileBarIcon from './MobileBarIcon/MobileBarIcon'
 import './MobileBar.css'
 
 const SideBarIcons = [
-    { icon: <FaHome size='32'></FaHome>, text: 'Dashboard' },
-    { icon: <FaTools size='26'></FaTools>, text: 'Devices' },
-    { icon: <FaDesktop size='28'></FaDesktop>, text: 'Terminals' },
+    { icon: <FaHouseChimney size='32'></FaHouseChimney>, text: 'Home' },
+    { icon: <FaTools size='32'></FaTools>, text: 'Devices' },
+    { icon: <FaDesktop size='32'></FaDesktop>, text: 'Terminals' },
     {
-        icon: <FaClipboardList size='28'></FaClipboardList>,
+        icon: <FaClipboardList size='32'></FaClipboardList>,
         text: 'Logs'
     }
 ]
 
 const MobileBar: FC = () => {
-    const [isExpanded, setIsExpanded] = useState(true)
+    const [isExpanded, setIsExpanded] = useState<boolean>(true)
+    const [isVisible, setIsVisible] = useState<boolean>(true)
+    const [lastScrollY, setLastScrollY] = useState<number>(0)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const curScrollY = window.scrollY
+            if (curScrollY > lastScrollY && curScrollY > 100) {
+                setIsVisible(false)
+            } else if (curScrollY < lastScrollY) {
+                setIsVisible(true)
+            }
+
+            setLastScrollY(curScrollY)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [lastScrollY])
+
     return (
-        <div className={`sidebar-v ${!isExpanded && 'sidebar-v-collapsed'}`}>
-            <div className='sidebar-v-header'>Mobey</div>
-            <div className='mt-3'>
+        <div className={`navbar ${!isVisible && 'navbar-collapsed'}`}>
+            <div className='flex justify-between p-4'>
                 {SideBarIcons.map((i) => (
                     <MobileBarIcon icon={i.icon} text={i.text} />
                 ))}
-            </div>
-            <div
-                onClick={() => {
-                    setIsExpanded(!isExpanded)
-                }}
-                className='sidebar-v-expand-button'
-            >
-                {isExpanded ? <FaAngleLeft size='20'></FaAngleLeft> : <FaAngleRight size='20'></FaAngleRight>}
             </div>
         </div>
     )
