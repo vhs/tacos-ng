@@ -23,13 +23,16 @@ const DeviceDescriptionForm: FC<DeviceDescriptionProps> = () => {
 
     return (
         <>
-            <div className='font-cutive font-semibold truncate'>Description: {description}</div>
-            <div className='flex flex-col'>
-                <label className='font-cutive mr-1 font-semibold' htmlFor='input'>
-                    Description:
+            <div className='font-teko flex w-full justify-between'>
+                <div className='mr-1 font-semibold'>Description:</div>
+                <div className='truncate'>{description}</div>
+            </div>
+            <div className='flex h-[25px]'>
+                <label className='font-teko mr-1 font-semibold' htmlFor='input'>
+                    Edit Description:
                 </label>
                 <input
-                    className='font-cutive flex-1 rounded-md'
+                    className='font-teko flex-1 rounded-md text-center text-black'
                     type='text'
                     id='input'
                     value={input}
