@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
 interface DeviceRolesProps {
-    selectedRole: string
     onRoleChange: (role: string) => void
+    selectedRole: string
+    id: string
 }
 
-const DeviceRoles: FC<DeviceRolesProps> = ({ selectedRole, onRoleChange }) => {
+const DeviceRoles: FC<DeviceRolesProps> = (props) => {
     const roles = [
         'tool:main:lazer-cutter',
         'tool:metal:cnc',
@@ -15,15 +16,16 @@ const DeviceRoles: FC<DeviceRolesProps> = ({ selectedRole, onRoleChange }) => {
         'tool:wood:jointer-planer',
         'tool:wood:table-saw'
     ]
-    console.log('Hello Roles')
+
     return (
-        <div className='mt-4 flex'>
-            <span className='font-teko mr-1 font-semibold'>Roles:</span>
+        <div className='font-teko mt-4 flex'>
+            <span className='mr-1 text-xl font-semibold'>Roles:</span>
             <select
-                className='font-teko flex-1 rounded-md text-black'
-                value={selectedRole}
+                className='flex-1 rounded-md text-lg text-black'
+                value={props.selectedRole}
                 title='Roles'
-                onChange={(e) => onRoleChange(e.target.value)}
+                name={props.id}
+                onChange={(e) => props.onRoleChange(e.target.value)}
             >
                 {roles.map((role, index) => (
                     <option key={index} value={role}>
