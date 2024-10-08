@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react'
-import { FaTools, FaDesktop } from 'react-icons/fa'
+import { FaDesktop } from 'react-icons/fa'
 import { FaHouseChimney, FaCodepen, FaClipboardList } from 'react-icons/fa6'
 import MobileBarIcon from './MobileBarIcon/MobileBarIcon'
 import './MobileBar.css'
@@ -47,7 +47,7 @@ const MobileBar: FC = () => {
         <div className={`navbar ${!isVisible && 'navbar-collapsed'}`}>
             <div className='flex justify-between p-4'>
                 {SideBarIcons.map((i) => (
-                    <MobileBarIcon icon={i.icon} text={i.text} />
+                    <MobileBarIcon icon={i.icon} text={i.text} key={crypto.randomUUID()} />
                 ))}
             </div>
         </div>

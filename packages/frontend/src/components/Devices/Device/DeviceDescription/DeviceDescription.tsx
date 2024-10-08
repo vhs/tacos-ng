@@ -1,10 +1,10 @@
 import { FC, useState, ChangeEvent, KeyboardEvent } from 'react'
 
 interface DeviceDescriptionProps {
-    foo?: string
+    id: string
 }
 
-const DeviceDescriptionForm: FC<DeviceDescriptionProps> = () => {
+const DeviceDescriptionForm: FC<DeviceDescriptionProps> = (props) => {
     const [input, setInput] = useState<string>('')
     const [description, setDiscription] = useState<string>('')
 
@@ -23,18 +23,18 @@ const DeviceDescriptionForm: FC<DeviceDescriptionProps> = () => {
 
     return (
         <>
-            <div className='font-teko flex w-full justify-between'>
+            <div className='font-teko mt-2 flex w-full justify-between text-xl'>
                 <div className='mr-1 font-semibold'>Description:</div>
                 <div className='truncate'>{description}</div>
             </div>
-            <div className='flex h-[25px]'>
-                <label className='font-teko mr-1 font-semibold' htmlFor='input'>
+            <div className='font-teko flex '>
+                <label className='mr-1 text-lg font-semibold' htmlFor={props.id}>
                     Edit Description:
                 </label>
                 <input
-                    className='font-teko flex-1 rounded-md text-center text-black'
+                    className='h-[28px] flex-1 rounded-md text-center text-lg text-black'
                     type='text'
-                    id='input'
+                    id={props.id}
                     value={input}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyPress}
