@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react'
+import './App.css'
 import MobileBar from '../MobileBar/MobileBar'
 import Devices from '../Devices/Devices'
+import Header from '../Header/Header'
 import SideBarVertical from '../SideBarVertical/SideBarVertical'
-import './App.css'
-import { useState, useEffect } from 'react'
 
 export function App() {
     const [isMobile, setIsMobile] = useState<boolean>(false)
@@ -18,8 +19,9 @@ export function App() {
     }, [])
 
     return (
-        <div className='flex bg-zinc-900'>
+        <div className='bg-zinc-900'>
             {isMobile ? <MobileBar /> : <MobileBar />}
+            <Header />
             <Devices />
         </div>
     )
