@@ -16,7 +16,7 @@ const Device: FC<DeviceProps> = (props) => {
     const [selectedRole, setSelectedRole] = useState<string>(props.role)
 
     return (
-        <div className='m-3 h-[316px] rounded-xl bg-zinc-800 px-4 pb-4 pt-2 text-white'>
+        <div className='m-3 h-[316px] rounded-xl bg-zinc-700 px-4 pb-4 pt-2 text-white'>
             <div className='font-teko text-4xl font-semibold'>{props.name}</div>
             <DeviceDescription id={props.id} />
             <DeviceRoles onRoleChange={setSelectedRole} selectedRole={selectedRole} id={props.id} />
