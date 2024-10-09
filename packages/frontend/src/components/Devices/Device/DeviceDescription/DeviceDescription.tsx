@@ -7,6 +7,7 @@ interface DeviceDescriptionProps {
 const DeviceDescriptionForm: FC<DeviceDescriptionProps> = (props) => {
     const [input, setInput] = useState<string>('')
     const [description, setDiscription] = useState<string>('')
+    const [isEdit, setIsEdit] = useState<boolean>(true)
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value)
@@ -21,24 +22,32 @@ const DeviceDescriptionForm: FC<DeviceDescriptionProps> = (props) => {
         }
     }
 
+    const handleClick = () => {
+        setIsEdit(!isEdit)
+    }
+
     return (
         <>
-            <div className='font-teko mt-2 flex w-full justify-between text-xl'>
-                <div className='mr-1 font-semibold'>Description:</div>
-                <div className='truncate'>{description}</div>
-            </div>
-            <div className='font-teko flex '>
-                <label className='mr-1 text-lg font-semibold' htmlFor={props.id}>
-                    Edit Description:
+            <div className='font-teko relative flex'>
+                <label className='mr-1 text-xl font-semibold' htmlFor={props.id}>
+                    Description:
                 </label>
                 <input
-                    className='h-[28px] flex-1 rounded-md text-center text-lg text-black'
+                    className='h-7 flex-1 rounded-md text-center text-lg text-black'
                     type='text'
                     id={props.id}
                     value={input}
+                    disabled={!isEdit}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyPress}
                 />
+                <button
+                    className='absolute right-0 h-7 rounded-md bg-zinc-300 
+                              px-2 text-center text-lg text-black'
+                    onClick={handleClick}
+                >
+                    {isEdit ? 'Save' : 'Edit'}
+                </button>
             </div>
         </>
     )
