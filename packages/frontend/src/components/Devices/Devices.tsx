@@ -3,13 +3,13 @@ import './Devices.css'
 import { useState, useEffect } from 'react'
 
 const DeviceContainers = [
-    { name: 'Lazer Cutter', role: 'tool:main:lazer-cutter', state: 'Unarmed', seen: '2 Years Ago', id: '' },
-    { name: 'Metal CNC', role: 'tool:metal:cnc', state: 'Unarmed', seen: '2 Years Ago', id: '' },
-    { name: 'Mill', role: 'tool:metal:mill', state: 'Unarmed', seen: '2 Years Ago', id: '' },
-    { name: 'Lathe', role: 'tool:metal:lathe', state: 'Unarmed', seen: '2 Years Ago', id: '' },
-    { name: 'Wood CNC', role: 'tool:wood:cnc', state: 'Unarmed', seen: '2 Years Ago', id: '' },
-    { name: 'Jointer-Planer', role: 'tool:wood:jointer-planer', state: 'Unarmed', seen: '2 Years Ago', id: '' },
-    { name: 'Table Saw', role: 'tool:wood:table-saw', state: 'Unarmed', seen: '2 Years Ago', id: '' }
+    { name: 'Lazer Cutter', role: 'tool:main:lazer-cutter', state: false, seen: '2 Years Ago', id: '' },
+    { name: 'Metal CNC', role: 'tool:metal:cnc', state: false, seen: '2 Years Ago', id: '' },
+    { name: 'Mill', role: 'tool:metal:mill', state: false, seen: '2 Years Ago', id: '' },
+    { name: 'Lathe', role: 'tool:metal:lathe', state: false, seen: '2 Years Ago', id: '' },
+    { name: 'Wood CNC', role: 'tool:wood:cnc', state: false, seen: '2 Years Ago', id: '' },
+    { name: 'Jointer-Planer', role: 'tool:wood:jointer-planer', state: false, seen: '2 Years Ago', id: '' },
+    { name: 'Table Saw', role: 'tool:wood:table-saw', state: false, seen: '2 Years Ago', id: '' }
 ]
 
 export default function Devices() {
@@ -17,6 +17,14 @@ export default function Devices() {
 
     const handleDelete = (id: string) => {
         setDevicesIDs((prevDeviceIDs) => prevDeviceIDs.filter((deviceID) => deviceID !== id))
+    }
+
+    const handleArm = (id: string) => {
+        DeviceContainers.forEach((i) => {
+            if (i.id === id) {
+                i.state = !i.state
+            }
+        })
     }
 
     const addDeviceID = (id: string) => {
@@ -37,6 +45,7 @@ export default function Devices() {
                     deviceIDs.includes(device.id) ? (
                         <Device
                             onDelete={handleDelete}
+                            onArm={handleArm}
                             name={device.name}
                             role={device.role}
                             state={device.state}
