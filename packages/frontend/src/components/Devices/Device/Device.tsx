@@ -5,9 +5,10 @@ import DeviceButton from './DeviceButton/DeviceButton'
 
 interface DeviceProps {
     onDelete: (id: string) => void
+    onArm: (id: string) => void
     name: string
     role: string
-    state: string
+    state: boolean
     seen: string
     id: string
 }
@@ -16,7 +17,7 @@ const Device: FC<DeviceProps> = (props) => {
     const [selectedRole, setSelectedRole] = useState<string>(props.role)
 
     return (
-        <div className='m-3 h-[316px] rounded-xl bg-zinc-700 px-4 pb-4 pt-2 text-white'>
+        <div className='m-3 h-auto rounded-xl bg-zinc-700 px-4 pb-4 pt-2 text-white'>
             <div className='font-teko text-4xl font-semibold'>{props.name}</div>
             <DeviceDescription id={props.id} />
             <DeviceRoles onRoleChange={setSelectedRole} selectedRole={selectedRole} id={props.id} />
@@ -28,7 +29,7 @@ const Device: FC<DeviceProps> = (props) => {
                 <span className='font-semibold'>Last Seen:</span>
                 <span>{props.seen}</span>
             </div>
-            <DeviceButton onDelete={props.onDelete} id={props.id} />
+            <DeviceButton onDelete={props.onDelete} onArm={props.onArm} id={props.id} />
         </div>
     )
 }
