@@ -1,26 +1,11 @@
-import { FC, useState, ChangeEvent, KeyboardEvent } from 'react'
+import { FC, useState } from 'react'
 
 interface DeviceDescriptionProps {
     id: string
 }
 
 const DeviceDescriptionForm: FC<DeviceDescriptionProps> = (props) => {
-    // const [input, setInput] = useState<string>('')
-    // const [description, setDiscription] = useState<string>('')
     const [isEdit, setIsEdit] = useState<boolean>(true)
-
-    // const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setInput(e.target.value)
-    // }
-
-    // const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    //     if (e.key === 'Enter') {
-    //         if (input.trim() !== '') {
-    //             setDiscription(input)
-    //             setInput('')
-    //         }
-    //     }
-    // }
 
     const handleClick = () => {
         setIsEdit(!isEdit)
@@ -37,8 +22,6 @@ const DeviceDescriptionForm: FC<DeviceDescriptionProps> = (props) => {
                     type='text'
                     id={props.id}
                     disabled={!isEdit}
-                    //onChange={handleInputChange}
-                    //onKeyDown={handleKeyPress}
                 />
                 <button
                     className='right-0 h-7 rounded-r-md bg-zinc-300 
