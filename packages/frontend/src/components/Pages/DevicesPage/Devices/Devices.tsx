@@ -39,7 +39,7 @@ export default function Devices() {
     }, [])
 
     return (
-        <div className='w-full px-4'>
+        <div className='bg-main-gray w-full px-4'>
             <div className='flex flex-col'>
                 {DeviceContainers.map((device) =>
                     deviceIDs.includes(device.id) ? (
