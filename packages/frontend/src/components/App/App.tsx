@@ -6,6 +6,8 @@ import MobileBar from '../MobileBar/MobileBar'
 
 import HomePage from '../Pages/HomePage/HomePage'
 import DevicesPage from '../Pages/DevicesPage/DevicesPage'
+import TerminalsPage from '../Pages/TerminalsPage/TerminalsPage'
+import LogsPage from '../Pages/LogsPage/LogsPage'
 
 export function App() {
     const [isMobile, setIsMobile] = useState<boolean>(false)
@@ -21,11 +23,13 @@ export function App() {
     }, [])
 
     return (
-        <div className='bg-zinc-900'>
+        <div>
             {isMobile ? <MobileBar /> : <MobileBar />}
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/devices' element={<DevicesPage />} />
+                <Route path='/terminals' element={<TerminalsPage />} />
+                <Route path='/logs' element={<LogsPage />} />
             </Routes>
         </div>
     )

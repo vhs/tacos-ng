@@ -5,7 +5,11 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = (props) => {
-    return <div className='font-teko pt-3 text-center text-5xl font-bold text-white underline'>{props.text}</div>
+    return (
+        <div className='bg-zinc-900 py-2'>
+            <div className='font-teko text-center text-5xl font-bold text-white underline'>{props.text}</div>
+        </div>
+    )
 }
 
 export default Header
