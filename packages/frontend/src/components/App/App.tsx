@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import MobileBar from '../MobileBar/MobileBar'
-import Devices from '../Devices/Devices'
-import Header from '../Header/Header'
-import SideBarVertical from '../SideBarVertical/SideBarVertical'
+//import SideBarVertical from '../SideBarVertical/SideBarVertical'
+
+import HomePage from '../Pages/HomePage/HomePage'
+import DevicesPage from '../Pages/DevicesPage/DevicesPage'
 
 export function App() {
     const [isMobile, setIsMobile] = useState<boolean>(false)
@@ -21,8 +23,10 @@ export function App() {
     return (
         <div className='bg-zinc-900'>
             {isMobile ? <MobileBar /> : <MobileBar />}
-            <Header />
-            <Devices />
+            <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/devices' element={<DevicesPage />} />
+            </Routes>
         </div>
     )
 }
