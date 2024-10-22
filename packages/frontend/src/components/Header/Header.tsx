@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import DarkModeToggle from './DarkModeToggle/DarkModeToggle'
 
 interface HeaderProps {
     text: string
@@ -6,8 +7,9 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = (props) => {
     return (
-        <div className='bg-zinc-900 py-2'>
-            <div className='font-teko text-center text-5xl font-bold text-white underline'>{props.text}</div>
+        <div className='bg-header-body flex justify-between py-2'>
+            <div className='font-teko text-header-text ml-4 text-5xl font-bold underline'>{props.text}</div>
+            <DarkModeToggle />
         </div>
     )
 }

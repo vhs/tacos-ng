@@ -14,30 +14,22 @@ const MobileBar: FC = () => {
         {
             icon: <FaHouseChimney size='32'></FaHouseChimney>,
             text: 'Home',
-            nav() {
-                navigate('/')
-            }
+            path: '/'
         },
         {
             icon: <FaCodepen size='32'></FaCodepen>,
             text: 'Devices',
-            nav() {
-                navigate('/devices')
-            }
+            path: '/devices'
         },
         {
             icon: <FaDesktop size='32'></FaDesktop>,
             text: 'Terminals',
-            nav() {
-                navigate('/terminals')
-            }
+            path: '/terminals'
         },
         {
             icon: <FaClipboardList size='32'></FaClipboardList>,
             text: 'Logs',
-            nav() {
-                navigate('/logs')
-            }
+            path: '/logs'
         }
     ]
 
@@ -70,7 +62,14 @@ const MobileBar: FC = () => {
         <div className={`navbar ${!isVisible && 'navbar-collapsed'}`}>
             <div className='flex justify-between p-4'>
                 {SideBarIcons.map((i) => (
-                    <MobileBarIcon icon={i.icon} text={i.text} handleClick={i.nav} key={crypto.randomUUID()} />
+                    <MobileBarIcon
+                        icon={i.icon}
+                        text={i.text}
+                        handleClick={() => {
+                            navigate(i.path)
+                        }}
+                        key={crypto.randomUUID()}
+                    />
                 ))}
             </div>
         </div>

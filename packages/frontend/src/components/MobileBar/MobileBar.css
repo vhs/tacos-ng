@@ -4,10 +4,9 @@
 
 @layer components {
     .navbar {
-        @apply fixed bottom-0 left-0 flex 
-      w-screen translate-y-0 flex-col
-      bg-zinc-950 text-white
-      transition-all duration-300;
+        @apply bg-navbar-body text-navbar-text fixed bottom-0 
+        left-0 flex w-screen translate-y-0 flex-col
+        transition-all duration-300;
     }
 
     .navbar-collapsed {
@@ -15,8 +14,9 @@
     }
 
     .navbar-button {
-        @apply flex size-[74px] flex-col items-center justify-center rounded-xl bg-gradient-to-tr 
-        from-zinc-800 to-zinc-900 pt-1 shadow-lg;
+        @apply from-navbar-grad-light to-navbar-grad-dark flex size-[74px] 
+        flex-col items-center justify-center 
+        rounded-xl bg-gradient-to-tr pt-1 shadow-lg;
     }
 
     .navbar-icon {

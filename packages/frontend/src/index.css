@@ -5,5 +5,45 @@
 @tailwind utilities;
 
 body {
-    background-color: #18181b;
+    background-color: rgb(24, 24, 27);
+}
+
+.light {
+    --header-body: 220 220 220;
+    --header-text: 26 26 26;
+    --header-toggle: 0 0 0;
+
+    --navbar-body: 245 245 245;
+    --navbar-text: 0 0 0;
+    --navbar-grad-light: 212 212 212;
+    --navbar-grad-dark: 232 232 232;
+
+    --body: 238 239 240;
+    --card: 200 200 200;
+    --card-text-primary: 0 0 0;
+    --card-text-secondary: 255 255 255;
+    --card-edit: 120 120 120;
+    --card-delete: 239 68 68;
+    --card-arm: 123 204 22;
+    --card-disarm: 249 115 22;
+}
+
+.dark {
+    --header-body: 24 24 27;
+    --header-text: 255 255 255;
+    --header-toggle: 0 0 0;
+
+    --navbar-body: 9 9 11;
+    --navbar-text: 255 255 255;
+    --navbar-grad-light: 39 39 42;
+    --navbar-grad-dark: 24 24 27;
+
+    --body: 15 16 17;
+    --card: 63 63 70;
+    --card-text-primary: 255 255 255;
+    --card-text-secondary: 0 0 0;
+    --card-edit: 212 212 216;
+    --card-delete: 239 68 68;
+    --card-arm: 123 204 22;
+    --card-disarm: 249 115 22;
 }
