@@ -18,14 +18,14 @@ const DeviceDescriptionForm: FC<DeviceDescriptionProps> = (props) => {
                     Description:
                 </label>
                 <input
-                    className='h-7 flex-1 truncate rounded-l-md text-center text-lg text-black'
+                    className='text-card-text-secondary h-7 flex-1 truncate rounded-l-md text-center text-lg'
                     type='text'
                     id={props.id}
                     disabled={!isEdit}
                 />
                 <button
-                    className='right-0 h-7 rounded-r-md bg-zinc-300 
-                              px-2 text-center text-lg text-black'
+                    className='text-card-text-secondary bg-card-edit right-0 h-7 
+                              rounded-r-md px-2 text-center text-lg'
                     onClick={handleClick}
                 >
                     {isEdit ? 'Save' : 'Edit'}
