@@ -1,5 +1,4 @@
 import Device from './Device/Device'
-import './Devices.css'
 import { useState, useEffect } from 'react'
 
 const DeviceContainers = [
@@ -39,7 +38,7 @@ export default function Devices() {
     }, [])
 
     return (
-        <div className='bg-body w-full px-4'>
+        <div className='bg-body w-full px-4 pt-3'>
             <div className='flex flex-col'>
                 {DeviceContainers.map((device) =>
                     deviceIDs.includes(device.id) ? (
