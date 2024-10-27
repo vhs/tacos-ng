@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import { FaMoon, FaS, FaSun } from 'react-icons/fa6'
 
 const DarkModeToggle: FC = () => {
     const [isDarkMode, setIsDarkMode] = useState(false)
@@ -17,15 +18,14 @@ const DarkModeToggle: FC = () => {
     return (
         <div
             onClick={handleToggle}
-            className={`flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-200 p-1 transition-colors duration-300 ${
-                isDarkMode ? 'bg-blue-600' : 'bg-gray-200'
-            }`}
+            className='bg-card flex h-11 w-20 items-center rounded-full p-1 transition-colors duration-300'
         >
             <div
-                className={`h-5 w-5 transform rounded-full bg-white shadow-md transition-transform duration-300 ${
-                    isDarkMode ? 'translate-x-5' : 'translate-x-0'
-                }`}
-            ></div>
+                className={`flex h-7 w-7 items-center justify-center rounded-full bg-transparent transition-transform duration-300
+                ${isDarkMode ? 'translate-x-[44px]' : 'translate-x-0'}`}
+            >
+                {isDarkMode ? <FaMoon className='text-white' size={22} /> : <FaSun size={20} />}
+            </div>
         </div>
     )
 }
