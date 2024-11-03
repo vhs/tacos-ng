@@ -45,4 +45,4 @@ you can then follow up with this by running
 pnpm run build
 ```
 
-and this will build the backend on your local repository
+and this will build the backend on your local repository.
