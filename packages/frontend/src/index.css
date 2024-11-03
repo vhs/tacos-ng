@@ -22,7 +22,7 @@ body {
     --card: 200 200 200;
     --card-text-primary: 0 0 0;
     --card-text-secondary: 0 0 0;
-    --card-edit: 120 120 120;
+    --card-edit: 220 220 220;
     --card-delete: 239 68 68;
     --card-arm: 123 204 22;
     --card-disarm: 249 115 22;
@@ -42,7 +42,7 @@ body {
     --card: 43 43 50;
     --card-text-primary: 255 255 255;
     --card-text-secondary: 255 255 255;
-    --card-edit: 212 212 216;
+    --card-edit: 112 112 116;
     --card-delete: 239 68 68;
     --card-arm: 123 204 22;
     --card-disarm: 249 115 22;
