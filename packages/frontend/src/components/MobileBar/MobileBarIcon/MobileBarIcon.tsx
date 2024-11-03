@@ -9,13 +9,12 @@ interface MobileBarIconProps {
 
 const MobileBarIcon: FC<MobileBarIconProps> = ({ icon, text, path }) => {
     const navigate = useNavigate()
+    const isActive = location.pathname === path
 
     const handleClick = () => {
         navigate(path)
         console.log(location.pathname)
     }
-
-    const isActive = location.pathname === path
 
     return (
         <div className={`navbar-button ${isActive ? 'text-lime-500' : 'text-white'}`} onClick={handleClick}>
