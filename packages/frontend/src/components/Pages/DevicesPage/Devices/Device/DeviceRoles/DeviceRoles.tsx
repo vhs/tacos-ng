@@ -19,9 +19,9 @@ const DeviceRoles: FC<DeviceRolesProps> = (props) => {
 
     return (
         <div className='font-teko mt-4 flex'>
-            <span className='mr-1 text-xl font-semibold'>Roles:</span>
+            <span className='text-card-text-primary mr-1 text-xl font-semibold'>Roles:</span>
             <select
-                className='text-card-text-secondary flex-1 rounded-md text-lg'
+                className='flex-1 rounded-md text-lg'
                 value={props.selectedRole}
                 title='Roles'
                 name={props.id}

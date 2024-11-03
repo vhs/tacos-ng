@@ -3,12 +3,10 @@ import { FaDesktop } from 'react-icons/fa'
 import { FaHouseChimney, FaCodepen, FaClipboardList } from 'react-icons/fa6'
 import MobileBarIcon from './MobileBarIcon/MobileBarIcon'
 import './MobileBar.css'
-import { useNavigate } from 'react-router-dom'
 
 const MobileBar: FC = () => {
     const [isVisible, setIsVisible] = useState<boolean>(true)
     const [lastScrollY, setLastScrollY] = useState<number>(0)
-    const navigate = useNavigate()
 
     const SideBarIcons = [
         {
@@ -62,14 +60,7 @@ const MobileBar: FC = () => {
         <div className={`navbar ${!isVisible && 'navbar-collapsed'}`}>
             <div className='flex justify-between p-4'>
                 {SideBarIcons.map((i) => (
-                    <MobileBarIcon
-                        icon={i.icon}
-                        text={i.text}
-                        handleClick={() => {
-                            navigate(i.path)
-                        }}
-                        key={crypto.randomUUID()}
-                    />
+                    <MobileBarIcon icon={i.icon} text={i.text} path={i.path} key={crypto.randomUUID()} />
                 ))}
             </div>
         </div>

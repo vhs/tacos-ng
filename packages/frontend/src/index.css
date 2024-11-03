@@ -21,7 +21,7 @@ body {
     --body: 238 239 240;
     --card: 200 200 200;
     --card-text-primary: 0 0 0;
-    --card-text-secondary: 255 255 255;
+    --card-text-secondary: 0 0 0;
     --card-edit: 120 120 120;
     --card-delete: 239 68 68;
     --card-arm: 123 204 22;
@@ -39,9 +39,9 @@ body {
     --navbar-grad-dark: 24 24 27;
 
     --body: 15 16 17;
-    --card: 63 63 70;
+    --card: 43 43 50;
     --card-text-primary: 255 255 255;
-    --card-text-secondary: 0 0 0;
+    --card-text-secondary: 255 255 255;
     --card-edit: 212 212 216;
     --card-delete: 239 68 68;
     --card-arm: 123 204 22;
