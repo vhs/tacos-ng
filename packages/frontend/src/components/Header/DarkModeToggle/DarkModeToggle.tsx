@@ -1,8 +1,12 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { FaMoon, FaS, FaSun } from 'react-icons/fa6'
 
 const DarkModeToggle: FC = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false)
+    const DM_KEY = 'dark-mode-key'
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        const savedValue = localStorage.getItem(DM_KEY)
+        return savedValue ? JSON.parse(savedValue) : true
+    })
 
     const handleToggle = () => {
         setIsDarkMode(!isDarkMode)
@@ -14,6 +18,10 @@ const DarkModeToggle: FC = () => {
             document.getElementById('root')?.classList.remove('dark')
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem(DM_KEY, JSON.stringify(isDarkMode))
+    }, [isDarkMode])
 
     return (
         <div
