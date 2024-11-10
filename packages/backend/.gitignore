@@ -12,3 +12,7 @@
 !package.json
 !tsconfig.json
 !tsup.config.ts
+
+#Allow db folder and its contents
+!backend/db/
+!backend/db/*.sql
