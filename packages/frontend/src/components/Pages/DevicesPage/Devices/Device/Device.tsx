@@ -18,12 +18,12 @@ const Device: FC<DeviceProps> = (props) => {
 
     return (
         <div className='bg-card m-3 mb-0 h-auto rounded-xl px-4 pb-4 pt-2'>
-            <div className='text-card-text-primary font-teko text-4xl font-semibold'>{props.name}</div>
+            <div className='text-card-text-primary font-teko mb-4 text-4xl font-semibold'>{props.name}</div>
             <DeviceDescription id={props.id} />
             <DeviceRoles onRoleChange={setSelectedRole} selectedRole={selectedRole} id={props.id} />
             <div className='text-card-text-primary font-teko mt-4 flex justify-between text-xl'>
                 <span className='font-teko text-xl font-semibold'>State:</span>
-                <span>{props.state}</span>
+                <span>{props.state ? 'Armed' : 'Unarmed'}</span>
             </div>
             <div className='text-card-text-primary font-teko mt-4 flex justify-between text-xl'>
                 <span className='font-semibold'>Last Seen:</span>

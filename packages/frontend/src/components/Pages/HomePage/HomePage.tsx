@@ -1,14 +1,12 @@
 import { FC } from 'react'
 import Header from '../../Header/Header'
-import Device from './Device/Device'
+import CondensedDevices from './CondensedDevices/CondensedDevices'
 
 const HomePage: FC = () => {
     return (
         <div>
             <Header text='Dashboard' />
-            <Device />
-            <Device />
-            <Device />
+            <CondensedDevices />
         </div>
     )
 }
