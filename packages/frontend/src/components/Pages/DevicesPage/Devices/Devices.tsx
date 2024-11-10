@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react'
 
 const DeviceContainers = [
     { name: 'Lazer Cutter', role: 'tool:main:lazer-cutter', state: false, seen: '2 Years Ago', id: '' },
+    { name: 'Lathe', role: 'tool:metal:lathe', state: false, seen: '2 Years Ago', id: '' },
     { name: 'Metal CNC', role: 'tool:metal:cnc', state: false, seen: '2 Years Ago', id: '' },
     { name: 'Mill', role: 'tool:metal:mill', state: false, seen: '2 Years Ago', id: '' },
-    { name: 'Lathe', role: 'tool:metal:lathe', state: false, seen: '2 Years Ago', id: '' },
     { name: 'Wood CNC', role: 'tool:wood:cnc', state: false, seen: '2 Years Ago', id: '' },
     { name: 'Jointer-Planer', role: 'tool:wood:jointer-planer', state: false, seen: '2 Years Ago', id: '' },
     { name: 'Table Saw', role: 'tool:wood:table-saw', state: false, seen: '2 Years Ago', id: '' }
@@ -38,23 +38,21 @@ export default function Devices() {
     }, [])
 
     return (
-        <div className='bg-body w-full'>
-            <div className='flex flex-col'>
-                {DeviceContainers.map((device) =>
-                    deviceIDs.includes(device.id) ? (
-                        <Device
-                            onDelete={handleDelete}
-                            onArm={handleArm}
-                            name={device.name}
-                            role={device.role}
-                            state={device.state}
-                            seen={device.seen}
-                            id={device.id}
-                            key={device.id}
-                        />
-                    ) : null
-                )}
-            </div>
+        <div className='bg-body flex w-full flex-col'>
+            {DeviceContainers.map((device) =>
+                deviceIDs.includes(device.id) ? (
+                    <Device
+                        onDelete={handleDelete}
+                        onArm={handleArm}
+                        name={device.name}
+                        role={device.role}
+                        state={device.state}
+                        seen={device.seen}
+                        id={device.id}
+                        key={device.id}
+                    />
+                ) : null
+            )}
         </div>
     )
 }
