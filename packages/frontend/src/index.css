@@ -26,6 +26,9 @@ body {
     --card-delete: 239 68 68;
     --card-arm: 123 204 22;
     --card-disarm: 249 115 22;
+
+    --mobile-bar-icon-active: rgb(55, 123, 18);
+    --mobile-bar-icon-inactive: rgb(85, 85, 85);
 }
 
 .dark {
@@ -46,4 +49,7 @@ body {
     --card-delete: 239 68 68;
     --card-arm: 123 204 22;
     --card-disarm: 249 115 22;
+
+    --mobile-bar-icon-active: rgb(55, 123, 18);
+    --mobile-bar-icon-inactive: rgb(255, 255, 255);
 }

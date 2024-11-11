@@ -25,6 +25,9 @@ export default {
                 'card-delete': 'rgba(var(--card-delete))',
                 'card-arm': 'rgba(var(--card-arm))',
                 'card-disarm': 'rgba(var(--card-disarm))',
+
+                'mobile-bar-icon-active': 'var(--mobile-bar-icon-active)',
+                'mobile-bar-icon-inactive': 'var(--mobile-bar-icon-inactive)'
             }
         }
     },
