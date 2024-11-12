@@ -3,6 +3,7 @@
 TACOS next generation(/rewrite)
 
 Documentation
+
 # Setup
 
 clone the repository to your a folder on your local machine from github
@@ -49,6 +50,7 @@ pnpm run build
 and this will build the backend on your local repository.
 
 # Frontend Iteration 2 Feature Tracking
+
 Working page routing
 -Navbar with buttons
 -Buttons provide user feedback
@@ -65,3 +67,6 @@ To Learn
 Learn SWR
 -Reason: custom handling of fetch and api calls
 -TODO: implement custom fetch for device
+
+Retrospective
+Some pitfalls we fell into during iteration 2 include having unnecessary slowdowns in the back end team, a lack of organization on tasks as well as a hard time defining ambiguous tasks. we addressed these problems by firstly having everyone on the back end team drop a course called CMPT 272, followed by incorporating the use of a task management software, in our case GitHub issues, and finally by creating a High level and low level design documents to define all the ambiguities associated with our system.
