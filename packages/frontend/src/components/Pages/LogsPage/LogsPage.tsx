@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import Header from '../../Header/Header'
+import Subheader from '../../Header/Subheader'
 
 const LogsPage: FC = () => {
     return (
         <div>
-            <Header text='Logs' />
+            <Subheader text='Logs' />
         </div>
     )
 }

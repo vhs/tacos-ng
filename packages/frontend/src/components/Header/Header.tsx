@@ -2,11 +2,7 @@ import { FC } from 'react'
 import DarkModeToggle from './DarkModeToggle/DarkModeToggle'
 import VHS from './logo.png'
 
-interface HeaderProps {
-    text: string
-}
-
-const Header: FC<HeaderProps> = (props) => {
+const Header: FC = () => {
     return (
         <div className='bg-header-body p-2'>
             <div className='flex justify-between'>
@@ -15,9 +11,6 @@ const Header: FC<HeaderProps> = (props) => {
                     <div className='font-teko text-header-text text-6xl font-bold leading-[56px]'>TACOS</div>
                 </div>
                 <DarkModeToggle />
-            </div>
-            <div className='flex justify-between'>
-                <div className='font-teko text-header-text ml-4 text-5xl font-bold underline'>{props.text}</div>
             </div>
         </div>
     )

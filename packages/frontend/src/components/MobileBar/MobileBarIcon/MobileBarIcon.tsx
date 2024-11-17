@@ -17,7 +17,7 @@ const MobileBarIcon: FC<MobileBarIconProps> = ({ icon, text, path }) => {
     }
 
     return (
-        <div className={`navbar-button ${isActive ? 'text-lime-500' : 'text-white'}`} onClick={handleClick}>
+        <div className={`navbar-button ${isActive ? 'text-lime-500' : 'text-navbar-text'}`} onClick={handleClick}>
             <div className='navbar-icon'>{icon}</div>
             <div className='navbar-icon-text'>{text}</div>
         </div>
