@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import MobileBar from '../MobileBar/MobileBar'
+import Header from '../Header/Header'
 //import SideBarVertical from '../SideBarVertical/SideBarVertical'
 
 import HomePage from '../Pages/HomePage/HomePage'
@@ -24,6 +25,7 @@ export function App() {
 
     return (
         <div>
+            <Header />
             {isMobile ? <MobileBar /> : <MobileBar />}
             <Routes>
                 <Route path='/' element={<HomePage />} />

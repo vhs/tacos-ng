@@ -14,7 +14,7 @@ const DeviceDescriptionForm: FC<DeviceDescriptionProps> = (props) => {
     return (
         <>
             <div className='font-teko flex'>
-                <label className='text-card-text-primary mr-1 text-xl font-semibold' htmlFor={props.id}>
+                <label className='text-card-text-primary mr-16 text-xl font-semibold' htmlFor={props.id}>
                     Description:
                 </label>
                 <input

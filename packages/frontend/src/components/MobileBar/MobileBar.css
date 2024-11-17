@@ -14,7 +14,7 @@
     }
 
     .navbar-button {
-        @apply from-navbar-grad-light to-navbar-grad-dark flex size-[74px] 
+        @apply bg-navbar-grad-dark flex size-[74px] 
         flex-col items-center justify-center 
         rounded-xl bg-gradient-to-tr pt-1 shadow-lg;
     }
