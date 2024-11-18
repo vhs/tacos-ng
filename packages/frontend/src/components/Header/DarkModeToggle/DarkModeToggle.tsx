@@ -26,10 +26,11 @@ const DarkModeToggle: FC = () => {
     return (
         <div
             onClick={handleToggle}
-            className='bg-card flex h-11 w-20 items-center rounded-full p-1 transition-colors duration-300'
+            className={`bg-card flex h-11 w-20 items-center rounded-full border p-1 
+            transition-colors duration-300 ${isDarkMode ? 'border-white' : 'border-black'}`}
         >
             <div
-                className={`flex h-7 w-7 items-center justify-center rounded-full bg-transparent transition-transform duration-300
+                className={`transiti on-transform flex h-7 w-7 items-center justify-center rounded-full bg-transparent duration-300
                 ${isDarkMode ? 'translate-x-[44px]' : 'translate-x-0'}`}
             >
                 {isDarkMode ? <FaMoon className='text-white' size={22} /> : <FaSun size={20} />}
