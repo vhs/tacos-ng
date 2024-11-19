@@ -10,6 +10,8 @@ import DevicesPage from '../Pages/DevicesPage/DevicesPage'
 import TerminalsPage from '../Pages/TerminalsPage/TerminalsPage'
 import LogsPage from '../Pages/LogsPage/LogsPage'
 
+import { initializeMockData } from '../../localStorageUtils'
+
 export function App() {
     const [isMobile, setIsMobile] = useState<boolean>(false)
 
@@ -18,6 +20,7 @@ export function App() {
     }
 
     useEffect(() => {
+        initializeMockData()
         handleReize()
         window.addEventListener('resize', handleReize)
         return () => window.removeEventListener('resize', handleReize)

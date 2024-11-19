@@ -3,7 +3,7 @@ import { FC } from 'react'
 interface DeviceRolesProps {
     onRoleChange: (role: string) => void
     selectedRole: string
-    id: string
+    id: number
 }
 
 const DeviceRoles: FC<DeviceRolesProps> = (props) => {
@@ -24,7 +24,7 @@ const DeviceRoles: FC<DeviceRolesProps> = (props) => {
                 className='flex-1 rounded-md text-lg'
                 value={props.selectedRole}
                 title='Roles'
-                name={props.id}
+                name={props.id.toString()}
                 onChange={(e) => props.onRoleChange(e.target.value)}
             >
                 {roles.map((role, index) => (

@@ -1,46 +1,35 @@
 import Device from './Device/Device'
 import { useState, useEffect } from 'react'
-
-const DeviceContainers = [
-    { name: 'Lazer Cutter', role: 'tool:main:lazer-cutter', state: false, seen: '2 Years Ago', id: '' },
-    { name: 'Lathe', role: 'tool:metal:lathe', state: false, seen: '2 Years Ago', id: '' },
-    { name: 'Metal CNC', role: 'tool:metal:cnc', state: false, seen: '2 Years Ago', id: '' },
-    { name: 'Mill', role: 'tool:metal:mill', state: false, seen: '2 Years Ago', id: '' },
-    { name: 'Wood CNC', role: 'tool:wood:cnc', state: false, seen: '2 Years Ago', id: '' },
-    { name: 'Jointer-Planer', role: 'tool:wood:jointer-planer', state: false, seen: '2 Years Ago', id: '' },
-    { name: 'Table Saw', role: 'tool:wood:table-saw', state: false, seen: '2 Years Ago', id: '' }
-]
+import { getDevices, toggleDeviceState, deleteDevice } from '../../../../localStorageUtils'
 
 export default function Devices() {
-    const [deviceIDs, setDevicesIDs] = useState<string[]>([])
+    const [devices, setDevices] = useState<any[]>([])
 
-    const handleDelete = (id: string) => {
-        setDevicesIDs((prevDeviceIDs) => prevDeviceIDs.filter((deviceID) => deviceID !== id))
+    const handleArm = async (id: number) => {
+        await toggleDeviceState(id)
+        const updatedDevices = await getDevices()
+        setDevices(updatedDevices)
     }
 
-    const handleArm = (id: string) => {
-        DeviceContainers.forEach((i) => {
-            if (i.id === id) {
-                i.state = !i.state
-            }
-        })
-    }
-
-    const addDeviceID = (id: string) => {
-        setDevicesIDs((prevDeviceIDs) => [...prevDeviceIDs, id])
+    const handleDelete = async (id: number) => {
+        await deleteDevice(id)
+        const updatedDevices = await getDevices()
+        setDevices(updatedDevices)
     }
 
     useEffect(() => {
-        DeviceContainers.forEach((i) => {
-            i.id = crypto.randomUUID()
-            addDeviceID(i.id)
-        })
+        const fetchDevices = async () => {
+            const data = await getDevices()
+            setDevices(data)
+        }
+
+        fetchDevices()
     }, [])
 
     return (
         <div className='bg-body flex w-full flex-col'>
-            {DeviceContainers.map((device) =>
-                deviceIDs.includes(device.id) ? (
+            {devices.map((device) =>
+                device.show ? (
                     <Device
                         onDelete={handleDelete}
                         onArm={handleArm}
