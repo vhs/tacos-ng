@@ -10,7 +10,7 @@ import DevicesPage from '../Pages/DevicesPage/DevicesPage'
 import TerminalsPage from '../Pages/TerminalsPage/TerminalsPage'
 import LogsPage from '../Pages/LogsPage/LogsPage'
 
-import { initializeMockData } from '../../localStorageUtils'
+import { initializeMockData, getItem } from '../../localStorageUtils'
 
 export function App() {
     const [isMobile, setIsMobile] = useState<boolean>(false)
@@ -20,6 +20,17 @@ export function App() {
     }
 
     useEffect(() => {
+        const theme = getItem('dark-mode-key')
+        const root = document.getElementById('root')
+        if (root) {
+            if (theme) {
+                root.classList.add('dark')
+                root.classList.remove('light')
+            } else {
+                root.classList.add('light')
+                root.classList.remove('dark')
+            }
+        }
         initializeMockData()
         handleReize()
         window.addEventListener('resize', handleReize)

@@ -1,5 +1,6 @@
-import { FC } from 'react'
+import { FC, useState, useEffect } from 'react'
 import CondensedDevice from './CondensedDevice/CondensedDevice'
+import { getDevices, toggleDeviceState } from '../../../../localStorageUtils'
 
 const CondensedDeviceContainers = [
     { name: 'Lazer Cutter', role: 'tool:main:lazer-cutter', state: false, seen: '2 Years Ago', id: '' },
@@ -12,18 +13,37 @@ const CondensedDeviceContainers = [
 ]
 
 const CondensedDevices: FC = () => {
+    const [devices, setDevices] = useState<any[]>([])
+
+    const handleArm = async (id: number) => {
+        await toggleDeviceState(id)
+        const updatedDevices = await getDevices()
+        setDevices(updatedDevices)
+    }
+
+    useEffect(() => {
+        const fetchDevices = async () => {
+            const data = await getDevices()
+            setDevices(data)
+        }
+
+        fetchDevices()
+    }, [])
+
     return (
         <div className='bg-body flex w-full flex-col'>
-            {CondensedDeviceContainers.map((device) => (
-                <CondensedDevice
-                    name={device.name}
-                    role={device.role}
-                    state={device.state}
-                    seen={device.seen}
-                    id={device.id}
-                    key={device.id}
-                />
-            ))}
+            {devices.map((device) =>
+                device.show ? (
+                    <CondensedDevice
+                        onArm={handleArm}
+                        name={device.name}
+                        state={device.state}
+                        seen={device.seen}
+                        id={device.id}
+                        key={device.id}
+                    />
+                ) : null
+            )}
         </div>
     )
 }
