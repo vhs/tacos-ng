@@ -10,16 +10,17 @@ interface TerminalProps {
     state: boolean
     seen: string
     id: string
+    windowWidth: number
 }
 
-const Terminal: FC<TerminalProps> = ({ onDelete, onArm, name, role, state, seen, id }) => {
+const Terminal: FC<TerminalProps> = ({ onDelete, onArm, name, role, state, seen, id, windowWidth }) => {
     const [selectedRole, setSelectedRole] = useState<string>(role)
     const [enabled, setEnabled] = useState<boolean>(false)
 
     return (
         <div className='bg-card m-3 mb-0 h-auto rounded-xl px-4 pb-4 pt-2'>
             <div className='text-card-text-primary font-teko text-4xl font-semibold'>{name}</div>
-            <TerminalField label='Description' id={id} type='text' />
+            <TerminalField label='Description' id={id} type='text' windowWidth={windowWidth} />
             <div className='font-teko text-card-text-primary mt-4 flex justify-between text-xl font-semibold'>
                 <label className='mr-16' htmlFor={'termcheck' + id}>
                     Enabled:
@@ -42,7 +43,7 @@ const Terminal: FC<TerminalProps> = ({ onDelete, onArm, name, role, state, seen,
                 <span className='font-teko text-xl font-semibold'>Secure:</span>
                 <span>{state ? 'Secured' : 'Unsecured'}</span>
             </div>
-            <TerminalField label='Secret' id={id} type='password' />
+            <TerminalField label='Secret' id={id} type='password' windowWidth={windowWidth} />
             <div className='text-card-text-primary font-teko mt-4 flex justify-between text-xl'>
                 <span className='font-semibold'>Last Seen:</span>
                 <span>{seen}</span>
