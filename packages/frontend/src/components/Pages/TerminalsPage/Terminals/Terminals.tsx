@@ -11,6 +11,7 @@ const DeviceContainers = [
 
 const Terminals: FC = () => {
     const [deviceIDs, setDevicesIDs] = useState<string[]>([])
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
 
     const handleDelete = (id: string) => {
         setDevicesIDs((prevDeviceIDs) => prevDeviceIDs.filter((deviceID) => deviceID !== id))
@@ -20,11 +21,18 @@ const Terminals: FC = () => {
         setDevicesIDs((prevDeviceIDs) => [...prevDeviceIDs, id])
     }
 
+    const updateWidth = () => {
+        setWindowWidth(window.innerWidth)
+    }
+
     useEffect(() => {
         DeviceContainers.forEach((i) => {
             i.id = crypto.randomUUID()
             addDeviceID(i.id)
         })
+
+        window.addEventListener('resize', updateWidth)
+        return () => window.removeEventListener('resize', updateWidth)
     }, [])
 
     return (
@@ -39,6 +47,7 @@ const Terminals: FC = () => {
                         seen={device.seen}
                         id={device.id}
                         key={device.id}
+                        windowWidth={windowWidth}
                     />
                 ) : null
             )}
