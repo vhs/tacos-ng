@@ -53,6 +53,7 @@ export default function Devices() {
                     />
                 ) : null
             )}
+            <div className='mt-3'></div>
         </div>
     )
 }
