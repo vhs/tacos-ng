@@ -24,6 +24,7 @@ const CondensedDevices: FC = () => {
                     key={device.id}
                 />
             ))}
+            <div className='mt-3'></div>
         </div>
     )
 }
