@@ -1,17 +1,17 @@
 import Device from './Device/Device'
 import { useState, useEffect } from 'react'
-import { getDevices, toggleDeviceState, deleteDevice } from '../../../../localStorageUtils'
+import { getDevices, updateDeviceState, deleteDevice } from 'localStorageUtils'
 
 export default function Devices() {
     const [devices, setDevices] = useState<any[]>([])
 
-    const handleArm = async (id: number) => {
-        await toggleDeviceState(id)
+    const handleArm = async (id: string) => {
+        await updateDeviceState(id)
         const updatedDevices = await getDevices()
         setDevices(updatedDevices)
     }
 
-    const handleDelete = async (id: number) => {
+    const handleDelete = async (id: string) => {
         await deleteDevice(id)
         const updatedDevices = await getDevices()
         setDevices(updatedDevices)

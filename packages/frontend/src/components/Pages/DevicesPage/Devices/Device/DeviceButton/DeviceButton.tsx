@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
 
 interface DeviceButtonProps {
-    onDelete: (id: number) => void
-    onArm: (id: number) => void
+    onDelete: (id: string) => void
+    onArm: (id: string) => void
     state: boolean
-    id: number
+    id: string
 }
 
 const DeviceButton: FC<DeviceButtonProps> = ({ onDelete, onArm, state, id }) => {

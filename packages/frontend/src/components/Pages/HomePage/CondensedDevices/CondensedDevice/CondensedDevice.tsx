@@ -1,12 +1,11 @@
 import { FC, useState } from 'react'
-import { getDevices, toggleDeviceState } from '../../../../../localStorageUtils'
 
 interface CondensedDeviceProps {
-    onArm: (id: number) => void
+    onArm: (id: string) => void
     name: string
     state: boolean
     seen: string
-    id: number
+    id: string
 }
 
 const CondensedDevice: FC<CondensedDeviceProps> = ({ onArm, name, state, seen, id }) => {
