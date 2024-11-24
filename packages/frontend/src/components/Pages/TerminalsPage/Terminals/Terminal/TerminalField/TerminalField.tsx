@@ -18,28 +18,25 @@ const TerminalField: FC<TerminalFieldProps> = ({ label, id, type, windowWidth })
     }
 
     return (
-        <>
-            <div className='font-teko mt-4 flex justify-between' style={{ width: '100%' }}>
-                <label className='text-card-text-primary text-xl font-semibold' htmlFor={id}>
-                    {label}:
-                </label>
-                <div className={`inline-block flex justify-end`} style={{ maxWidth: '50%', width: '50%' }}>
-                    <input
-                        className={`h-7 flex-1 truncate rounded-l-md text-center text-lg`}
-                        style={{ maxWidth: '100%' }}
-                        type={type}
-                        id={id}
-                        disabled={!isEdit}
-                    />
-                    <button
-                        className='text-card-text-secondary bg-card-edit h-7 rounded-r-md px-2 text-lg'
-                        onClick={handleClick}
-                    >
-                        {isEdit ? 'Save' : 'Edit'}
-                    </button>
-                </div>
+        <div className='font-teko mt-4 flex w-full justify-between'>
+            <label className='text-card-text-primary text-xl font-semibold' htmlFor={id}>
+                {label}:
+            </label>
+            <div className='flex w-1/2 max-w-[50%]'>
+                <input
+                    className='h-7 w-full truncate rounded-l-md text-center text-lg'
+                    type={type}
+                    id={id}
+                    disabled={!isEdit}
+                />
+                <button
+                    className='text-card-text-secondary bg-card-edit h-7 flex-shrink-0 rounded-r-md px-2 text-lg'
+                    onClick={handleClick}
+                >
+                    {isEdit ? 'Save' : 'Edit'}
+                </button>
             </div>
-        </>
+        </div>
     )
 }
 
