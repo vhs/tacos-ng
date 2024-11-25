@@ -1,6 +1,6 @@
 import Device from './Device/Device'
 import { useState, useEffect } from 'react'
-import { getDevices, updateDeviceState, deleteDevice } from 'localStorageUtils'
+import { getDevices, updateDeviceDescription, updateDeviceState, deleteDevice } from 'localStorageUtils'
 
 export default function Devices() {
     const [devices, setDevices] = useState<any[]>([])
@@ -13,6 +13,12 @@ export default function Devices() {
 
     const handleDelete = async (id: string) => {
         await deleteDevice(id)
+        const updatedDevices = await getDevices()
+        setDevices(updatedDevices)
+    }
+
+    const handleDescriptionUpdate = async (id: string, text: string) => {
+        await updateDeviceDescription(id, text)
         const updatedDevices = await getDevices()
         setDevices(updatedDevices)
     }
@@ -33,7 +39,9 @@ export default function Devices() {
                     <Device
                         onDelete={handleDelete}
                         onArm={handleArm}
+                        onDescriptionUpdate={handleDescriptionUpdate}
                         name={device.name}
+                        description={device.description}
                         role={device.role}
                         state={device.state}
                         seen={device.seen}

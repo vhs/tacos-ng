@@ -1,9 +1,27 @@
 import { FC, useState, useEffect } from 'react'
 import Terminal from './Terminal/Terminal'
-import { getTerminals, updateTerminalEnabled, deleteTerminal } from 'localStorageUtils'
+import {
+    getTerminals,
+    updateTerminalDescription,
+    updateTerminalSecret,
+    updateTerminalEnabled,
+    deleteTerminal
+} from 'localStorageUtils'
 
 const Terminals: FC = () => {
     const [terminals, setTerminals] = useState<any[]>([])
+
+    const handleDescriptionUpdate = async (id: string, text: string) => {
+        await updateTerminalDescription(id, text)
+        const updatedTerminals = await getTerminals()
+        setTerminals(updatedTerminals)
+    }
+
+    const handleSecretUpdate = async (id: string, text: string) => {
+        await updateTerminalSecret(id, text)
+        const updatedTerminals = await getTerminals()
+        setTerminals(updatedTerminals)
+    }
 
     const handleEnable = async (id: string) => {
         await updateTerminalEnabled(id)
@@ -24,7 +42,7 @@ const Terminals: FC = () => {
         }
 
         fetchTerminals()
-    }, [])
+    }, [terminals])
 
     return (
         <div className='bg-body flex w-full flex-col'>
@@ -33,10 +51,13 @@ const Terminals: FC = () => {
                     <Terminal
                         onDelete={handleDelete}
                         onEnable={handleEnable}
+                        onDescriptionUpdate={handleDescriptionUpdate}
+                        onSecretUpdate={handleSecretUpdate}
                         name={terminal.name}
-                        enabled={terminal.enabled}
+                        description={terminal.description}
                         target={terminal.target}
                         state={terminal.state}
+                        secret={terminal.secret}
                         seen={terminal.seen}
                         id={terminal.id}
                         key={terminal.id}
