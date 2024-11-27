@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import TerminalField from './TerminalField/TerminalField'
 import TerminalTargets from './TerminalTargets/TerminalTargets'
+import DeleteConfirmation from '../../../Shared/DeleteConfirmation'
 
 interface TerminalProps {
     onDelete: (id: string) => void
@@ -33,6 +34,22 @@ const Terminal: FC<TerminalProps> = ({
     const [isEnabled, setIsEnabled] = useState<boolean>(true)
     const [deleting, setDeleting] = useState<boolean>(false)
     const [enabling, setEnabling] = useState<boolean>(false)
+    const [showConfirm, setShowConfirm] = useState(false)
+
+    const handleDeleteClick = () => {
+        setShowConfirm(true)
+    }
+
+    const confirmDelete = async () => {
+        setShowConfirm(false)
+        await onDelete(id)
+        setDeleting(false)
+    }
+
+    const cancelDelete = () => {
+        setShowConfirm(false)
+        setDeleting(false)
+    }
 
     return (
         <div className='bg-card m-3 mb-0 h-auto rounded-xl px-4 pb-4 pt-2'>
@@ -98,8 +115,7 @@ const Terminal: FC<TerminalProps> = ({
                     onClick={async () => {
                         if (deleting) return
                         setDeleting(true)
-                        await onDelete(id)
-                        setDeleting(false)
+                        await handleDeleteClick()
                     }}
                 >
                     {deleting ? (
@@ -108,6 +124,7 @@ const Terminal: FC<TerminalProps> = ({
                         'Delete'
                     )}
                 </button>
+                {showConfirm && <DeleteConfirmation onConfirm={confirmDelete} onCancel={cancelDelete} />}
             </div>
         </div>
     )
