@@ -11,8 +11,7 @@ WORKDIR /build
 
 COPY . /build
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile \
-    && pnpm run -r build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile && pnpm run -r build
 
 FROM build AS stage-backend
 
@@ -36,7 +35,6 @@ WORKDIR /usr/share/nginx/html/
 
 COPY ./docker/nginx.conf /etc/nginx/
 
-COPY --from=build /build/packages/frontend/public/ /usr/share/nginx/html/
 COPY --from=build /build/packages/frontend/dist/ /usr/share/nginx/html/
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
