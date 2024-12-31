@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .sidebar-v {
+        @apply fixed left-0 top-0 m-0 flex
+        h-screen w-[236px] flex-col bg-gray-900
+        text-white shadow-lg transition-all delay-150 duration-300 ease-linear;
+    }
+
+    .sidebar-v-collapsed {
+        @apply w-[114px];
+    }
+
+    .sidebar-v-header {
+        @apply font-teko ml-4 mt-[11.5px] min-h-[60px] bg-gradient-to-r
+        from-yellow-600 via-orange-600 to-red-600 bg-clip-text
+        text-6xl font-semibold leading-[60px]
+        text-transparent transition-all delay-150 duration-[350ms] ease-linear;
+    }
+
+    .sidebar-v-collapsed .sidebar-v-header {
+        @apply text-2xl duration-[300ms] ease-linear;
+    }
+
+    .sidebar-v-icon {
+        @apply relative mb-6 ml-[18px] flex 
+        h-10 w-10 cursor-pointer items-center justify-center
+        rounded-[15px] bg-gradient-to-r from-yellow-600
+        via-orange-600 to-red-600 transition-all duration-300 ease-linear
+        hover:rounded-[10px];
+    }
+
+    .sidebar-v-tooltip {
+        @apply absolute left-28 m-2 w-auto min-w-max origin-left
+        scale-0 rounded-md bg-gray-900 p-2 text-lg font-bold
+        text-white shadow-md transition-all duration-100;
+    }
+
+    .sidebar-v-collapsed .sidebar-v-icon:hover .sidebar-v-tooltip {
+        @apply scale-100;
+    }
+
+    .sidebar-v-icon-text {
+        @apply font-teko absolute left-16 min-w-max text-2xl font-medium
+        opacity-100 transition-opacity delay-[300ms] duration-[450ms];
+    }
+
+    .sidebar-v-collapsed .sidebar-v-icon-text {
+        @apply opacity-0 transition-opacity delay-0 duration-200;
+    }
+
+    .sidebar-v-expand-button {
+        @apply absolute left-full top-1/2 flex h-6 w-6 -translate-x-3/4
+        cursor-pointer items-center justify-center rounded-[10px] 
+        bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 
+        transition-all delay-100 duration-300 ease-linear hover:rounded-md;
+    }
+}

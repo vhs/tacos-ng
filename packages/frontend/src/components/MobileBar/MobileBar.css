@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .navbar {
+        @apply bg-navbar-body text-navbar-text fixed bottom-0 
+        left-0 flex w-screen translate-y-0 flex-col
+        transition-all duration-300;
+    }
+
+    .navbar-collapsed {
+        @apply translate-y-full;
+    }
+
+    .navbar-button {
+        @apply bg-navbar-grad-dark flex size-[74px] 
+        flex-col items-center justify-center 
+        rounded-xl bg-gradient-to-tr pt-1 shadow-lg;
+    }
+
+    .navbar-icon {
+        @apply mb-1;
+    }
+
+    .navbar-icon-text {
+        @apply font-teko text-lg font-medium;
+    }
+}
