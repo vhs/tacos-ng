@@ -1,34 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
+import MobileBar from '../MobileBar/MobileBar'
+import Header from '../Header/Header'
+//import SideBarVertical from '../SideBarVertical/SideBarVertical'
+
+import HomePage from '../Pages/HomePage/HomePage'
+import DevicesPage from '../Pages/DevicesPage/DevicesPage'
+import TerminalsPage from '../Pages/TerminalsPage/TerminalsPage'
+import LogsPage from '../Pages/LogsPage/LogsPage'
 
 export function App() {
-    const [count, setCount] = useState(0)
+    const [isMobile, setIsMobile] = useState<boolean>(false)
+
+    const handleReize = () => {
+        setIsMobile(window.matchMedia('(max-width: 640px)').matches)
+    }
+
+    useEffect(() => {
+        handleReize()
+        window.addEventListener('resize', handleReize)
+        return () => window.removeEventListener('resize', handleReize)
+    }, [])
 
     return (
-        <>
-            <div className='flex flex-row'>
-                <div className='basis-1/2'>
-                    <a href='https://vitejs.dev' target='_blank'>
-                        <img src={'/vite.svg'} className='logo m-auto' alt='Vite logo' />
-                    </a>
-                </div>
-                <div className='basis-1/2'>
-                    <a href='https://react.dev' target='_blank'>
-                        <img src={'/react.svg'} className='logo m-auto' alt='React logo' />
-                    </a>
-                </div>
-            </div>
-            <h1 className='text-3xl font-bold underline' data-testid='App'>
-                TACOS
-            </h1>
-            <div className='card'>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
+        <div>
+            <Header />
+            {isMobile ? <MobileBar /> : <MobileBar />}
+            <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/devices' element={<DevicesPage />} />
+                <Route path='/terminals' element={<TerminalsPage />} />
+                <Route path='/logs' element={<LogsPage />} />
+            </Routes>
+        </div>
     )
 }
 
